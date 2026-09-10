@@ -12,7 +12,6 @@ from mcp.server.fastmcp import FastMCP
 
 from config.settings import settings
 from logging_config.logger import configure_logging, configure_tracing, event
-from observability.metrics import record_tool
 from observability.span_data import summarize
 from mcp_server.tools.attractions import search_attractions as _search_attractions
 from mcp_server.tools.budget import calculate_budget as _calculate_budget
@@ -26,7 +25,6 @@ mcp = FastMCP("local-travel-tools", host=settings.mcp_host, port=settings.mcp_po
 
 def _logged(name: str, fn, **kwargs):
     from opentelemetry import trace
-    started = time.perf_counter()
     with trace.get_tracer("travel.mcp").start_as_current_span(
             f"mcp.tool.{name}",
             attributes={
@@ -38,11 +36,9 @@ def _logged(name: str, fn, **kwargs):
             result = fn(**kwargs)
             trace.get_current_span().set_attribute(
                 "mcp.tool.output", summarize(result))
-            record_tool(name, (time.perf_counter() - started) * 1000, status="success")
             event(logger, "mcp_tool_execution_completed", tool_name=name, status="success")
             return result
         except Exception as error:
-            record_tool(name, (time.perf_counter() - started) * 1000, status="failure")
             trace.get_current_span().record_exception(error)
             trace.get_current_span().set_status(trace.StatusCode.ERROR, str(error))
             trace.get_current_span().set_attribute("mcp.tool.error", str(error))
@@ -138,4 +134,17 @@ if __name__ == "__main__":
     parser.add_argument("--transport", choices=("stdio", "streamable-http"),
                         default="streamable-http")
     args = parser.parse_args()
-    mcp.run(transport=args.transport)
+    if args.transport == "stdio":
+        mcp.run(transport="stdio")
+    else:
+        import uvicorn
+        from observability.telemetry import wrap_asgi_app
+
+        # Mirrors FastMCP.run_streamable_http_async(), but wraps the app so the
+        # inbound traceparent is extracted and this server's tool spans join
+        # the caller's trace instead of starting their own.
+        uvicorn.run(
+            wrap_asgi_app(mcp.streamable_http_app()),
+            host=settings.mcp_host,
+            port=settings.mcp_port,
+        )
