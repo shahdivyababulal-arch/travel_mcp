@@ -1,7 +1,106 @@
 [
-  {"destination":"New York","name":"The Metropolitan Museum of Art","description":"World-class art museum spanning five millennia.","category":"museum","interests":["museums","art"],"estimated_cost":30,"duration_hours":3,"location":"Upper East Side"},
-  {"destination":"New York","name":"Museum of Modern Art","description":"Modern and contemporary art in Midtown.","category":"museum","interests":["museums","art"],"estimated_cost":30,"duration_hours":2.5,"location":"Midtown"},
-  {"destination":"New York","name":"Central Park Walk","description":"Scenic walking paths, gardens, and landmarks.","category":"outdoor","interests":["walking","outdoors"],"estimated_cost":0,"duration_hours":2,"location":"Manhattan"},
-  {"destination":"New York","name":"High Line","description":"Elevated park with gardens and city views.","category":"outdoor","interests":["walking","outdoors"],"estimated_cost":0,"duration_hours":1.5,"location":"Chelsea"},
-  {"destination":"New York","name":"Statue of Liberty","description":"Harbor landmark with island and skyline views.","category":"landmark","interests":["history","outdoors"],"estimated_cost":25,"duration_hours":4,"location":"New York Harbor"}
+  {
+    "destination": "New York",
+    "name": "The Metropolitan Museum of Art",
+    "description": "World-class art museum spanning five millennia.",
+    "category": "museum",
+    "interests": [
+      "museums",
+      "art"
+    ],
+    "estimated_cost": 30,
+    "duration_hours": 3,
+    "location": "Upper East Side"
+  },
+  {
+    "destination": "New York",
+    "name": "Museum of Modern Art",
+    "description": "Modern and contemporary art in Midtown.",
+    "category": "museum",
+    "interests": [
+      "museums",
+      "art"
+    ],
+    "estimated_cost": 30,
+    "duration_hours": 2.5,
+    "location": "Midtown"
+  },
+  {
+    "destination": "New York",
+    "name": "Central Park Walk",
+    "description": "Scenic walking paths, gardens, and landmarks.",
+    "category": "outdoor",
+    "interests": [
+      "walking",
+      "outdoors"
+    ],
+    "estimated_cost": 0,
+    "duration_hours": 2,
+    "location": "Manhattan"
+  },
+  {
+    "destination": "New York",
+    "name": "High Line",
+    "description": "Elevated park with gardens and city views.",
+    "category": "outdoor",
+    "interests": [
+      "walking",
+      "outdoors"
+    ],
+    "estimated_cost": 0,
+    "duration_hours": 1.5,
+    "location": "Chelsea"
+  },
+  {
+    "destination": "New York",
+    "name": "Statue of Liberty",
+    "description": "Harbor landmark with island and skyline views.",
+    "category": "landmark",
+    "interests": [
+      "history",
+      "outdoors"
+    ],
+    "estimated_cost": 25,
+    "duration_hours": 4,
+    "location": "New York Harbor"
+  },
+  {
+    "destination": "Boston",
+    "name": "Museum of Fine Arts",
+    "description": "Encyclopedic art museum with a renowned Impressionist collection.",
+    "category": "museum",
+    "interests": [
+      "museums",
+      "art"
+    ],
+    "estimated_cost": 27,
+    "duration_hours": 3,
+    "location": "Fenway"
+  },
+  {
+    "destination": "Boston",
+    "name": "Freedom Trail",
+    "description": "Two-and-a-half mile walking route past sixteen historic sites.",
+    "category": "landmark",
+    "interests": [
+      "history",
+      "walking"
+    ],
+    "estimated_cost": 0,
+    "duration_hours": 2,
+    "location": "Downtown"
+  },
+  {
+    "destination": "Boston",
+    "name": "New England Aquarium",
+    "description": "Harbourside aquarium built around a giant ocean tank.",
+    "category": "aquarium",
+    "interests": [
+      "family",
+      "nature"
+    ],
+    "estimated_cost": 34,
+    "duration_hours": 2,
+    "location": "Waterfront"
+  }
 ]

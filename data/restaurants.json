@@ -1,6 +1,86 @@
 [
-  {"destination":"New York","name":"Luna Trattoria","cuisine":"Italian","price_range":"moderate","meal_types":["dinner"],"dietary":["vegetarian"],"estimated_cost":45,"neighborhood":"Greenwich Village"},
-  {"destination":"New York","name":"Mercato","cuisine":"Italian","price_range":"budget","meal_types":["lunch","dinner"],"dietary":[],"estimated_cost":25,"neighborhood":"SoHo"},
-  {"destination":"New York","name":"Pasta House","cuisine":"Italian","price_range":"moderate","meal_types":["lunch","dinner"],"dietary":["vegetarian"],"estimated_cost":35,"neighborhood":"Midtown"},
-  {"destination":"New York","name":"City Cafe","cuisine":"American","price_range":"budget","meal_types":["breakfast","lunch"],"dietary":["vegetarian"],"estimated_cost":15,"neighborhood":"Midtown"}
+  {
+    "destination": "New York",
+    "name": "Luna Trattoria",
+    "cuisine": "Italian",
+    "price_range": "moderate",
+    "meal_types": [
+      "dinner"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "estimated_cost": 45,
+    "neighborhood": "Greenwich Village"
+  },
+  {
+    "destination": "New York",
+    "name": "Mercato",
+    "cuisine": "Italian",
+    "price_range": "budget",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "dietary": [],
+    "estimated_cost": 25,
+    "neighborhood": "SoHo"
+  },
+  {
+    "destination": "New York",
+    "name": "Pasta House",
+    "cuisine": "Italian",
+    "price_range": "moderate",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "estimated_cost": 35,
+    "neighborhood": "Midtown"
+  },
+  {
+    "destination": "New York",
+    "name": "City Cafe",
+    "cuisine": "American",
+    "price_range": "budget",
+    "meal_types": [
+      "breakfast",
+      "lunch"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "estimated_cost": 15,
+    "neighborhood": "Midtown"
+  },
+  {
+    "destination": "Boston",
+    "name": "Trattoria Nord",
+    "cuisine": "Italian",
+    "price_range": "moderate",
+    "meal_types": [
+      "dinner"
+    ],
+    "dietary": [
+      "vegetarian"
+    ],
+    "estimated_cost": 42,
+    "neighborhood": "North End"
+  },
+  {
+    "destination": "Boston",
+    "name": "Harbor Oyster House",
+    "cuisine": "Seafood",
+    "price_range": "moderate",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "dietary": [],
+    "estimated_cost": 38,
+    "neighborhood": "Seaport"
+  }
 ]

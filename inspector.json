@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "travel-mcp-http": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:8001/mcp"
+    },
+    "travel-mcp-stdio-fixtures": {
+      "type": "stdio",
+      "command": "C:/envs/travel/Scripts/python.exe",
+      "args": ["-m", "mcp_server.server", "--transport", "stdio"],
+      "env": { "TRAVEL_DATA_SOURCE": "local" }
+    }
+  }
+}

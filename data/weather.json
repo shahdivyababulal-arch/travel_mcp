@@ -1,6 +1,58 @@
 [
-  {"destination":"New York","date":"day-1","temperature_f":72,"condition":"Sunny","precipitation_probability":10},
-  {"destination":"New York","date":"day-2","temperature_f":68,"condition":"Partly cloudy","precipitation_probability":20},
-  {"destination":"New York","date":"day-3","temperature_f":64,"condition":"Light rain","precipitation_probability":60},
-  {"destination":"New York","date":"default","temperature_f":70,"condition":"Partly cloudy","precipitation_probability":25}
+  {
+    "destination": "New York",
+    "date": "day-1",
+    "temperature_f": 72,
+    "condition": "Sunny",
+    "precipitation_probability": 10
+  },
+  {
+    "destination": "New York",
+    "date": "day-2",
+    "temperature_f": 68,
+    "condition": "Partly cloudy",
+    "precipitation_probability": 20
+  },
+  {
+    "destination": "New York",
+    "date": "day-3",
+    "temperature_f": 64,
+    "condition": "Light rain",
+    "precipitation_probability": 60
+  },
+  {
+    "destination": "New York",
+    "date": "default",
+    "temperature_f": 70,
+    "condition": "Partly cloudy",
+    "precipitation_probability": 25
+  },
+  {
+    "destination": "Boston",
+    "date": "day-1",
+    "temperature_f": 66,
+    "condition": "Sunny",
+    "precipitation_probability": 5
+  },
+  {
+    "destination": "Boston",
+    "date": "day-2",
+    "temperature_f": 61,
+    "condition": "Partly cloudy",
+    "precipitation_probability": 25
+  },
+  {
+    "destination": "Boston",
+    "date": "day-3",
+    "temperature_f": 58,
+    "condition": "Light rain",
+    "precipitation_probability": 55
+  },
+  {
+    "destination": "Boston",
+    "date": "default",
+    "temperature_f": 63,
+    "condition": "Partly cloudy",
+    "precipitation_probability": 20
+  }
 ]

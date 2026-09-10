@@ -4,19 +4,29 @@ from .common import geocode, get_json, load, require_destination
 from config.settings import settings
 
 
-def get_weather(destination: str, number_of_days: int = 1,
+def get_weather(destination: str, number_of_days: int | None = None,
                 travel_dates: list[str] | None = None) -> dict[str, Any]:
     destination = require_destination(destination)
+    # Callers that pass travel_dates rarely also pass a matching count, so
+    # derive it from the dates instead of rejecting the call. Only an
+    # explicit count that contradicts the dates is an error.
+    if number_of_days is None:
+        number_of_days = len(travel_dates) if travel_dates else 1
     if number_of_days < 1 or number_of_days > 30:
         raise ValueError("number_of_days must be between 1 and 30")
     dates = travel_dates or [f"day-{index}" for index in range(1, number_of_days + 1)]
     if travel_dates:
+        if len(travel_dates) != number_of_days:
+            raise ValueError(
+                f"number_of_days ({number_of_days}) must match the "
+                f"{len(travel_dates)} travel_dates provided, or be omitted"
+            )
         try:
             requested_dates = [date.fromisoformat(value) for value in dates[:number_of_days]]
         except ValueError as error:
             raise ValueError("travel_dates must use YYYY-MM-DD format") from error
-        if len(travel_dates) != number_of_days or requested_dates != sorted(requested_dates):
-            raise ValueError("travel_dates must contain one ordered date per day")
+        if requested_dates != sorted(requested_dates):
+            raise ValueError("travel_dates must be in ascending order")
     if settings.travel_data_source.lower() == "local":
         rows = [row for row in load("weather.json") if row["destination"].lower() == destination.lower()]
         if not rows:

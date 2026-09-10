@@ -61,12 +61,16 @@ def search_attractions(destination: str, number_of_days: int = 1,
 
 
 @mcp.tool()
-def get_weather(destination: str, number_of_days: int = 1,
+def get_weather(destination: str, number_of_days: int | None = None,
                 travel_dates: list[str] | None = None) -> dict:
     """Get daily weather for a destination and requested dates.
 
-    Use for weather questions or weather-aware planning. With travel_dates,
-    provide one ordered YYYY-MM-DD date per requested day.
+    Use for weather questions or weather-aware planning.
+
+    Pass either travel_dates (ordered YYYY-MM-DD, one per day) or
+    number_of_days -- not both. When travel_dates is given, number_of_days is
+    derived from it and should be omitted. Defaults to 1 day when neither is
+    given.
     """
     return _logged("get_weather", _get_weather, destination=destination,
                    number_of_days=number_of_days, travel_dates=travel_dates)
