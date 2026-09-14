@@ -1,6 +1,6 @@
 """Local MCP server for the travel planner.
 
-Run with ``python -m mcp_server.server`` to expose the tools over Streamable
+Run with ``python main.py mcp`` to expose the tools over Streamable
 HTTP. The optional ``--transport stdio`` mode remains available for direct MCP
 clients that manage the server as a subprocess.
 """

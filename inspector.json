@@ -7,7 +7,7 @@
     "travel-mcp-stdio-fixtures": {
       "type": "stdio",
       "command": "C:/envs/travel/Scripts/python.exe",
-      "args": ["-m", "mcp_server.server", "--transport", "stdio"],
+      "args": ["main.py", "mcp", "--transport", "stdio"],
       "env": { "TRAVEL_DATA_SOURCE": "local" }
     }
   }

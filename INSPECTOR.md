@@ -14,7 +14,7 @@ Two server profiles are defined in `inspector.json`:
 `travel-mcp-http` attaches to the already-running server, so start it first:
 
 ```powershell
-python -m mcp_server.server --transport streamable-http
+python main.py mcp
 ```
 
 `TRAVEL_DATA_SOURCE` is read by the **server** process, not by Inspector. To
