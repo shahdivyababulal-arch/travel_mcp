@@ -1,7 +1,7 @@
 from typing import Any
 from datetime import date
 from .common import geocode, get_json, load, require_destination
-from config.settings import settings
+from config import settings
 
 
 def get_weather(destination: str, number_of_days: int | None = None,

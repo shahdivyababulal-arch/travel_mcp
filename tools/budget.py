@@ -1,6 +1,6 @@
 from typing import Any
 from .common import require_destination
-from config.settings import settings
+from config import settings
 
 
 TIER_COST_ESTIMATES = {

@@ -10,7 +10,7 @@ import time
 
 from mcp.server.fastmcp import FastMCP
 
-from config.settings import settings
+from config import settings
 from logging_config.logger import configure_logging, configure_tracing, event
 from observability.span_data import summarize
 from mcp_server.tools.attractions import search_attractions as _search_attractions

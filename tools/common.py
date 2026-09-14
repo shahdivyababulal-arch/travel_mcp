@@ -8,7 +8,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from config.settings import settings
+from config import settings
 from observability.span_data import summarize
 
 DATA_DIR = Path(__file__).parent.parent / "data"

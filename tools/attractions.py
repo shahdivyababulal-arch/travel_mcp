@@ -1,6 +1,6 @@
 from typing import Any
 from .common import geoapify_places, load, require_destination
-from config.settings import settings
+from config import settings
 
 
 INTEREST_CATEGORIES = {
