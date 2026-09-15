@@ -11,8 +11,7 @@ import time
 from mcp.server.fastmcp import FastMCP
 
 from config import settings
-from logging_config.logger import configure_logging, configure_tracing, event
-from observability.span_data import summarize
+from observability import configure_logging, configure_tracing, event, summarize
 from mcp_server.tools.attractions import search_attractions as _search_attractions
 from mcp_server.tools.budget import calculate_budget as _calculate_budget
 from mcp_server.tools.itinerary import create_itinerary as _create_itinerary
@@ -142,7 +141,7 @@ if __name__ == "__main__":
         mcp.run(transport="stdio")
     else:
         import uvicorn
-        from observability.telemetry import wrap_asgi_app
+        from observability import wrap_asgi_app
 
         # Mirrors FastMCP.run_streamable_http_async(), but wraps the app so the
         # inbound traceparent is extracted and this server's tool spans join

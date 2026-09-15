@@ -9,7 +9,7 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 from config import settings
-from observability.span_data import summarize
+from observability import summarize
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 
