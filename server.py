@@ -1,25 +1,27 @@
-"""Local MCP server for the travel planner.
+"""Travel tool server: the MCP surface the travel agent calls.
 
-Run with ``python main.py mcp`` to expose the tools over Streamable
-HTTP. The optional ``--transport stdio`` mode remains available for direct MCP
-clients that manage the server as a subprocess.
+Defines the FastMCP app and the tool registrations only. Process startup --
+logging, tracing, transport selection -- lives in main.py, so importing this
+module (for tests, or for MCP Inspector) has no side effects beyond building
+the app.
+
+Run it with ``python main.py``; ``--transport stdio`` remains available for
+MCP clients that manage the server as a subprocess.
 """
 import logging
-import argparse
-import time
 
 from mcp.server.fastmcp import FastMCP
 
 from config import settings
-from observability import configure_logging, configure_tracing, event, summarize
-from mcp_server.tools.attractions import search_attractions as _search_attractions
-from mcp_server.tools.budget import calculate_budget as _calculate_budget
-from mcp_server.tools.itinerary import create_itinerary as _create_itinerary
-from mcp_server.tools.restaurants import search_restaurants as _search_restaurants
-from mcp_server.tools.weather import get_weather as _get_weather
+from observability import event, summarize
+from tools.attractions import search_attractions as _search_attractions
+from tools.budget import calculate_budget as _calculate_budget
+from tools.itinerary import create_itinerary as _create_itinerary
+from tools.restaurants import search_restaurants as _search_restaurants
+from tools.weather import get_weather as _get_weather
 
 logger = logging.getLogger("travel.mcp")
-mcp = FastMCP("local-travel-tools", host=settings.mcp_host, port=settings.mcp_port)
+mcp = FastMCP(settings.name, host=settings.mcp_host, port=settings.mcp_port)
 
 
 def _logged(name: str, fn, **kwargs):
@@ -128,26 +130,3 @@ def create_itinerary(destination: str, number_of_days: int,
                    number_of_days=number_of_days, attractions=attractions,
                    restaurants=restaurants, weather=weather, budget=budget,
                    preferences=preferences)
-
-
-if __name__ == "__main__":
-    configure_logging(settings.log_level)
-    configure_tracing("travel-mcp-server")
-    parser = argparse.ArgumentParser(description="Run the local travel MCP server")
-    parser.add_argument("--transport", choices=("stdio", "streamable-http"),
-                        default="streamable-http")
-    args = parser.parse_args()
-    if args.transport == "stdio":
-        mcp.run(transport="stdio")
-    else:
-        import uvicorn
-        from observability import wrap_asgi_app
-
-        # Mirrors FastMCP.run_streamable_http_async(), but wraps the app so the
-        # inbound traceparent is extracted and this server's tool spans join
-        # the caller's trace instead of starting their own.
-        uvicorn.run(
-            wrap_asgi_app(mcp.streamable_http_app()),
-            host=settings.mcp_host,
-            port=settings.mcp_port,
-        )

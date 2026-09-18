@@ -1,0 +1,32 @@
+# Declarative configuration for the travel MCP server.
+#
+# Every value here can be overridden by the environment variable named in
+# config.py, so Cloud Run supplies deploy-time values without a second config
+# source. MCP_CONFIG_PATH may point at a local path or a gs:// URI.
+
+name: local-travel-tools
+
+server:
+  # Loopback by default so a local run is not exposed on the network. The
+  # container sets MCP_HOST=0.0.0.0 -- Cloud Run routes to the published port
+  # from outside the container's network namespace, so binding loopback there
+  # makes the service unreachable and the startup probe fail.
+  host: 127.0.0.1
+  port: 8001
+
+data:
+  # real  -> live Geoapify / Open-Meteo lookups (needs GEOAPIFY_API_KEY)
+  # local -> the bundled JSON fixtures in data/, for tests and offline demos
+  travel_data_source: real
+
+observability:
+  service_name: travel-mcp
+  # Jaeger's OTLP/HTTP receiver for local runs. In Cloud Run this is ignored:
+  # OTEL_TRACES_EXPORTER=gcp selects the Cloud Trace exporter instead.
+  otlp_endpoint: http://127.0.0.1:4318
+
+budget:
+  # Per-day allowance for costs with no market rate to look up (tips, local
+  # transit top-ups, incidentals). The per-tier food/hotel/transport estimates
+  # are constants in tools/budget.py; only this one is configurable.
+  miscellaneous_per_day: 15
