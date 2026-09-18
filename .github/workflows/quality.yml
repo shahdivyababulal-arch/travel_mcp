@@ -1,0 +1,21 @@
+name: Tool server quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      # --frozen fails if uv.lock is stale rather than silently resolving
+      # something other than what was committed.
+      - run: uv sync --frozen
+      - name: Unit tests
+        run: uv run pytest -q
+      - name: Tool chain evaluation
+        run: uv run python -m evaluation.run_tool_chain_evals
