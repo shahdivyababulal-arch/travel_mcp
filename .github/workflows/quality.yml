@@ -17,5 +17,3 @@ jobs:
       - run: uv sync --frozen
       - name: Unit tests
         run: uv run pytest -q
-      - name: Tool chain evaluation
-        run: uv run python -m evaluation.run_tool_chain_evals

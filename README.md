@@ -15,6 +15,7 @@ answers tool calls and nothing else.
 | `main.py` | Process entrypoint: logging, tracing, transport selection |
 | `server.py` | FastMCP app and tool registrations (import-safe, no side effects) |
 | `tools/` | The tool implementations |
+| `tests/tool_chain.py` | The five tools composed, for tests only |
 | `data/` | JSON fixtures used when `TRAVEL_DATA_SOURCE=local` |
 | `config.py` | Loads `server.yaml`; env vars override every value |
 | `observability.py` | JSON logging and OpenTelemetry bootstrap |

@@ -5,15 +5,14 @@ tool-selection policy the model is prompted to follow -- gather attractions,
 optionally restaurants and weather, price it, then schedule it -- and calls
 the tool functions directly, with no model and no MCP round trip.
 
-It lives in this repository now because every line of it is tool code. It was
-in the agent only because the tools were, and keeping it there would have
-meant the agent depending on this package to run its own tests, which is the
-coupling the split exists to remove.
+It lives under tests/ because testing is all it is for -- nothing the server
+serves imports it. It came across from the travel agent with the tools,
+since every line of it is tool code.
 
-What it is good for: proving the tools compose into a coherent itinerary with
-grounded costs, fast and offline. What it is not: an end-to-end test. The
-model's actual tool choices are covered by the agent's golden and trajectory
-evals, which do run the model.
+What it is good for: proving the tools compose into a coherent itinerary
+with grounded costs, fast and offline. What it is not: an end-to-end test.
+The model's actual tool choices are covered by the agent's golden and
+trajectory evals, which do run the model.
 """
 
 from __future__ import annotations
