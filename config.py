@@ -114,9 +114,6 @@ class Settings:
     otel_enabled: bool = str(_top("otel_enabled", "OTEL_ENABLED", "true")).lower() in {"1", "true", "yes"}
     otel_service_name: str = str(value("observability", "service_name",
                                        "OTEL_SERVICE_NAME", "travel-mcp"))
-    otel_exporter_otlp_endpoint: str = str(value(
-        "observability", "otlp_endpoint",
-        "OTEL_EXPORTER_OTLP_ENDPOINT", "http://127.0.0.1:4318"))
 
     # Budget fallback, used when providers return no prices. The per-tier
     # estimates live in tools/budget.py as constants; only this one is

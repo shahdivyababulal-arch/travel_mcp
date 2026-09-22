@@ -21,9 +21,6 @@ data:
 
 observability:
   service_name: travel-mcp
-  # Jaeger's OTLP/HTTP receiver for local runs. In Cloud Run this is ignored:
-  # OTEL_TRACES_EXPORTER=gcp selects the Cloud Trace exporter instead.
-  otlp_endpoint: http://127.0.0.1:4318
 
 budget:
   # Per-day allowance for costs with no market rate to look up (tips, local

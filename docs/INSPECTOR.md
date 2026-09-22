@@ -32,7 +32,8 @@ pre-authenticated URL containing a session token -- open that link rather than
 a bare `localhost:6274`, and do not set `DANGEROUSLY_OMIT_AUTH`.
 
 Because the server wraps its ASGI app with `OpenTelemetryMiddleware`, calls made
-from Inspector emit spans and appear in Jaeger under `travel-mcp-server`.
+from Inspector emit spans and appear in Cloud Trace under
+`travel-mcp-server`.
 
 ## CLI mode
 

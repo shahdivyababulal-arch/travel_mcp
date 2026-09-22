@@ -50,7 +50,6 @@ jobs:
             --project "$PROJECT_ID" \
             --service-account "travel-mcp@${PROJECT_ID}.iam.gserviceaccount.com" \
             --no-allow-unauthenticated \
-            --set-env-vars "OTEL_TRACES_EXPORTER=gcp" \
             --set-secrets "GEOAPIFY_API_KEY=geoapify-api-key:latest" \
             --memory 512Mi --cpu 1 --timeout 300 --max-instances 3
 
