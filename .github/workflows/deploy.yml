@@ -41,14 +41,14 @@ jobs:
       - name: Deploy to Cloud Run
         # Private: only the travel agent's runtime service account holds
         # roles/run.invoker, and it authenticates with an ID token whose
-        # audience is this service's URL. Runs as the travel agent's identity
-        # because the two are one trust domain.
+        # audience is this service's URL. Runs as its own
+        # identity, holding only the secret it needs.
         run: |
           gcloud run deploy "$SERVICE" \
             --source . \
             --region "$REGION" \
             --project "$PROJECT_ID" \
-            --service-account "travel-agent@${PROJECT_ID}.iam.gserviceaccount.com" \
+            --service-account "travel-mcp@${PROJECT_ID}.iam.gserviceaccount.com" \
             --no-allow-unauthenticated \
             --set-env-vars "OTEL_TRACES_EXPORTER=gcp" \
             --set-secrets "GEOAPIFY_API_KEY=geoapify-api-key:latest" \
